@@ -24,12 +24,14 @@
 
 **bazel**
 
-通过`bazel`构建go项目，至于它的有点这里就不啰嗦，`gitlab-runner`所在的机器需要安装`bazel`
+通过`bazel`构建go项目，至于它的优点这里就不啰嗦，`gitlab-runner`所在的机器需要安装`bazel`
 
 最后放上效果截图
 
 `test,build`
+
 <img src="/img/gitlab-runner_7.jpg" alt="gitlab-runner" align=center />
 
 `deploy`
+
 <img src="/img/gitlab-runner_8.jpg" alt="gitlab-runner" align=center />
