@@ -1,0 +1,6 @@
+
+#build --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64
+#build --incompatible_enable_cc_toolchain_resolution=false
+#build --incompatible_require_ctx_in_configure_features=false
+build --spawn_strategy=standalone
+build -j 4

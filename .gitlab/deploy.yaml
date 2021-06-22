@@ -1,0 +1,9 @@
+deploy:
+  stage: deploy
+  script:
+    - echo "deploy"
+  only:
+    - /^deploy-.*$/
+  tags:
+    - golang-runner
+
