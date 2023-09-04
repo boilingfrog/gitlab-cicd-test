@@ -3,6 +3,6 @@
 set -o errexit
 set -o pipefail
 
-source "build/init.sh"
+source "build/env.sh"
 
 bazel test --test_output=errors //src/...

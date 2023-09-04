@@ -5,5 +5,5 @@ deploy:
   only:
     - /^deploy-.*$/
   tags:
-    - golang-runner
+    - hw-runner
 

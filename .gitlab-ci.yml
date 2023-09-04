@@ -1,3 +1,5 @@
+image: liz2019/dev-golang:1.17
+
 stages:
   - test
   - build
@@ -9,15 +11,15 @@ variables:
 lint:
   stage: test
   script:
-    - export GO_PROJECT_PATH="/home/gitlab-runner/goWork/src"
+    - export GO_PROJECT_PATH="/go/src/gitlab.test.com/deploy"
     - mkdir -p $GO_PROJECT_PATH
-    - ln -s $(pwd) $GO_PROJECT_PATH/test
-    - cd $GO_PROJECT_PATH/test
+    - ln -s $(pwd) $GO_PROJECT_PATH/gitlab-ci-test
+    - cd $GO_PROJECT_PATH/gitlab-ci-test
     - bash build/lint.sh
   only:
     - branches
   tags:
-    - golang-runner
+    - hw-runner
 
 test:
   stage: test
@@ -31,13 +33,13 @@ test:
     paths:
       - .cache
   tags:
-    - golang-runner
+    - hw-runner
 
 build:
   stage: build
   before_script:
-    - url_host=`git remote get-url origin | sed -e "s/http:\/\/gitlab-ci-token:.*@//g"`
-    - git remote set-url origin "http://$GIT_ACCESS_USER:$GIT_ACCESS_PASSWORD@${url_host}"
+    - url_host=`git remote get-url origin | sed -e "s/https:\/\/gitlab-ci-token:.*@//g"`
+    - git remote set-url origin "https://$GIT_ACCESS_USER:$GIT_ACCESS_PASSWORD@${url_host}"
     - git config user.name $GIT_ACCESS_USER
     - git config user.email $GIT_ACCESS_EMAIL
     - git fetch --tags --force
@@ -52,8 +54,6 @@ build:
     paths:
       - .cache
   tags:
-    - golang-runner
-
-
+    - hw-runner
 
 include: '/.gitlab/deploy.yaml'

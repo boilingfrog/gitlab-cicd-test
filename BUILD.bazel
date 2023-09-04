@@ -1,6 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
-# gazelle:prefix test
+# gazelle:prefix gitlab.test.com/deploy/gitlab-ci-test
 # gazelle:proto disable_global
 # gazelle:exclude .cache
 gazelle(name = "gazelle")
