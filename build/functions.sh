@@ -38,6 +38,7 @@ function build_docker_images() {
       cp "${binary_file_path}" "${docker_build_path}/${binary_name}"
 
       cat <<EOF >"${docker_file_path}"
+
 FROM ${base_image}
 COPY ${binary_name} /usr/local/bin/${binary_name}
 
@@ -139,7 +140,8 @@ function auto_tag() {
 }
 
 function print_log() {
-  echo "++++++++++++ ${1}"
+  time=$(TZ=UTC-8 date +"[%Y-%m-%d %H:%M:%S]")
+  echo "+++++++++ ${time} ${1}"
   shift
   for message; do
     echo "    ${message}"
